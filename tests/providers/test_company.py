@@ -9,6 +9,7 @@ import pytest
 from faker.providers.company.az_AZ import Provider as AzAzCompanyProvider
 from faker.providers.company.el_GR import Provider as ElGrCompanyProvider
 from faker.providers.company.en_PH import Provider as EnPhCompanyProvider
+from faker.providers.company.es_ES import Provider as EsEsCompanyProvider
 from faker.providers.company.fil_PH import Provider as FilPhCompanyProvider
 from faker.providers.company.hu_HU import Provider as HuHuCompanyProvider
 from faker.providers.company.hy_AM import Provider as HyAmCompanyProvider
@@ -24,6 +25,7 @@ from faker.providers.company.ru_RU import Provider as RuRuCompanyProvider
 from faker.providers.company.ru_RU import calculate_checksum
 from faker.providers.company.th_TH import Provider as ThThCompanyProvider
 from faker.providers.company.tr_TR import Provider as TrTrCompanyProvider
+from faker.providers.company.vi_VN import Provider as ViVnCompanyProvider
 from faker.utils.checksums import luhn_checksum
 
 
@@ -476,3 +478,33 @@ class TestNlBe:
             suffix = faker.company_suffix()
             assert isinstance(suffix, str)
             assert suffix in NlBeCompanyProvider.company_suffixes
+
+
+class TestEsEs:
+    """Test esE_ES company provider methods"""
+
+    def test_company_suffix(self, faker, num_samples):
+        for _ in range(num_samples):
+            suffix = faker.company_suffix()
+            assert isinstance(suffix, str)
+            assert suffix in list(EsEsCompanyProvider.company_suffixes.keys())
+
+    def test_company(self, faker, num_samples):
+        for _ in range(num_samples):
+            company = faker.company()
+            assert isinstance(company, str)
+
+
+class TestViVn:
+    """Test vi_VN company provider methods"""
+
+    def test_company_suffix(self, faker, num_samples):
+        for _ in range(num_samples):
+            suffix = faker.company_suffix()
+            assert isinstance(suffix, str)
+            assert suffix in ViVnCompanyProvider.company_suffixes
+
+    def test_company(self, faker, num_samples):
+        for _ in range(num_samples):
+            company = faker.company()
+            assert isinstance(company, str)
